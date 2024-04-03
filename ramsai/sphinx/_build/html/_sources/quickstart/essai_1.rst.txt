@@ -1,0 +1,190 @@
+****************
+Les bases de rst
+****************
+
+- **Auteurs** : Chloé Lindingre
+
+- **Date de création** : 15/02/2024.
+
+- **Date de modification** : |today|.
+
+- **Statut du document** : en travaux.
+
+
+Introduction 
+============
+
+Voici le paragraphe d'Introduction, est une introduction informelle `reStructuredText <https://fr.wikipedia.org/wiki/ReStructuredText>`_ (reST), qui est un langage de balisage de texte. Le texte reST est interprété (p. ex., par `Sphinx <http://www.sphinx-doc.org>`_) pour produire des documents HTML pouvant être lus par un navigateur. 
+
+Ceci est un paragraphe, il est plutôt court
+
+    Ce paragraphe indenté va être rendu comme un bloc en retrait, idéal pour les citations/
+
+Là on revient à la ligne.
+
+Styles de texte
+===============
+Texte en *italique* avec ``*italique*`` et texte en **gras** avec ``**gras**`` ou encore **partielle**\ment avec ``**partielle**\ment``. 
+Ce sont des balises dans le texte (*inline markup*), pour le faire.
+
+Pour faire apparaître du texte en police d'empattement fixe, utiliser des doubles guillemets ! ``text à empattement fixe`` (justement utilisés pour signaler les commandes reST dans ce document). noter qu'aucun bidouillage supplémentaire ne peut être fait à l'intérieur de telles guillemets (p. ex., pas d'italiques).
+
+Pour utiliser l'un de ces caractères spéciaux dans le texte, il suffit d'utiliser un antislash comme ceci : 5\*6=30 qui est en fait écrit ``5\*6=30``.
+
+
+Astuces
+=======
+Le balisage en ligne est une sorte de parenthesage et il doit être utilisé en tant que tel, immédiatement avant et après le texte que l'on veut marquer, (sans insérer d'espaces, ni au milieu d'un mot)
+
+Listes 
+======
+Les listes d'items sont soit d'énumération, à puces ou définitions. Pour ces listes, on peut avoir autant de paragraphes et de sous-liste qu'on le souhaite, tant que le côté gauche de leur paragraphe est aligné avec la première ligne. 
+
+Les listes doivent toujours démarrer comme un nouveau paragraphe. 
+
+1. Nombre
+
+A. Lettres capitales                                                                                                                                                                                                  et ça peut aller sur plusieurs lignes
+
+    avec 2 paragraphes
+
+a. lettres minuscules
+
+        3. avec un sous-liqte démarrant avec un nombre diffrents
+        4. Les nombres doivent être corrects !
+
+I. Chiffres romains majuscules
+
+i. chiffres romains minuscules
+
+(1) Encore un nombre
+
+2) Encore !
+
+Les listes à puces comment indifféremment par un "-", "+", "*"
+
+* une liste à puce avec "*"
+
+    - une sous-liste à puces avec "-"
+
+        + encore une
+
+        + et là ???
+    - un autre item
+
+    - une autre 
+
+
+Note : Si un paragraphe commence par un signe pouvant être interpreté comme un énumérateur, le premier caractère sera précédé d'un anti-slash ::
+
+    A. Einstein est intelligent
+
+est rendu ainsi :
+\A. Einstein est intelligent 
+
+.. liste_definition:
+
+Liste de définition 
+-------------------
+
+Au contraire des précédentes, les listes e définition consistent en un terme et la définition de ce terme. Il speuvent être utilisés comme un glossaire, dictionnaire. Le format d'une telle liste est :
+
+Machin 
+  La définition de machin, indenté. Noter que le terme est automatiquement mis en gras. Le terme doit tenir en une ligne. La définition tient en un ou plusieurs paragraphes, indentés de la même manière par rapport au terme. Ne pas sauter le ligne entre le terme et sa définition. 
+
+
+Préformatage (code informatique)
+================================
+
+Pour inclure un paragraphe de texte préformaté, terminer le bloc par "::". Le bloc préformaté qui suivra sera terminé quand le texte reviendra au même niveau d'indentation que le texte juste avant le bloc préformaté. Le deux ":" sont convertis en un simple deux-points s'ils ne sont pas précédés d'un espace.  
+
+Un exemple::
+
+	Espaces, retour-chariot, toute sorte de balisage (comme *celui-ci* ou \celui-ci) sont prservés dans de tels blocs.
+  Voyez comme j'ai changé de niveau d'indentation
+  (mais pas suffisamment pour sortir du bloc)
+
+Là j'en suis sortie !!
+
+Noter que si un paragraphe consiste seulement en "::", il sera supprimé de l'output (donc pas rendu):
+
+::
+
+    Voici du texte préformaté, mais le premier "::" paragraphe est supprimé
+
+
+Sections 
+========
+
+Plus d'informations `ici <http://docutils.sourceforge.net/docs/user/rst/quickstart.html#sections>`_
+
+Pour organisr du texte long en sections, on peut utiliser des titres différents de section. 
+
+Titre de chapitre 1 
+=================
+
+Titre de section 1.1
+--------------------
+
+Titre de sous-section 1.1.1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Titre de section 1.2
+--------------------
+
+.. _lien_interne:
+
+Titre chapitre 2
+================
+
+il faut noter que chaque titre peut être utilisé comme cible d'un lien interne au document, en utilisant simplement son nom. Pour créer un lien hypertexte avec un titre de document, écrire simplement \`Titre Chapitre 2\`_ pour avoir un lien `Titre chapitre 2`_. 
+
+
+Titre du document ou sous-titre 
+===============================
+
+Le titre du document entier est distinct des autres titres de sections et doit être formaté d'une manière différente. Utiliser une décoration unique au début du document pour son titre. Utiliser une autre décoration unique immédiatement après le titre du document. Exemple 
+
+=================
+Titre du document
+=================
+
+----------
+sous-titre
+----------
+
+Section 1
+=========
+
+
+Séparation 
+==========
+
+Une séparation (rendue en HTML avec la balise <hr>) se créée avec la répétition d'au moins 4 caractères de ponctuation, séparation de lignes vides :: 
+
+    paragraphe
+
+    ----
+
+    paragraphe
+
+se rend ainsi : 
+
+paragraphe
+
+----
+
+paragraphe
+
+Commentaires 
+============
+
+Pour insérer un commentaire qui ne sera pas traité par reST ou Sphinx, faire débuter le paragraphe par ".." .
+
+.. ceci est un commentaire
+
+Tableaux 
+========
+
+
+

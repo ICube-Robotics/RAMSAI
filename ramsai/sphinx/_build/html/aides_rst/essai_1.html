@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Les bases de rst &mdash; RAMSAI 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Test nouvelle partielle" href="../userguide/blabla.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            RAMSAI
+              <img src="../_static/logo-icube.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quick start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart/start.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart/presentation.html">Presentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../userguide/blabla.html">Test nouvelle partielle</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Aides RST</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Les bases de rst</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#styles-de-texte">Styles de texte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#astuces">Astuces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#listes">Listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#liste-de-definition">Liste de définition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#preformatage-code-informatique">Préformatage (code informatique)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sections">Sections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#titre-de-chapitre-1">Titre de chapitre 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#titre-de-section-1-1">Titre de section 1.1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#titre-de-sous-section-1-1-1">Titre de sous-section 1.1.1</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#titre-de-section-1-2">Titre de section 1.2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#titre-chapitre-2">Titre chapitre 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#titre-du-document-ou-sous-titre">Titre du document ou sous-titre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#separation">Séparation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#commentaires">Commentaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tableaux">Tableaux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tableaux-simples">Tableaux simples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tableaux-csv">Tableaux CSV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tableaux-en-liste">Tableaux en liste</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tableaux-en-grille">Tableaux en grille</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes-de-bas-de-page">Notes de bas de page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#liens-hypertextes">Liens hypertextes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#liens-externes">Liens externes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#substitutions">Substitutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#directives">Directives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#insertion-de-html">Insertion de HTML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#table-des-matieres">Table des matières</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#images">Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#figures">Figures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#encadre-flottant">Encadré flottant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#paragraphes-specifiques-admonitions">Paragraphes spécifiques (admonitions)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#formules-mathematiques">Formules mathématiques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#directives-html">Directives HTML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#et-apres">Et après ?</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RAMSAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Les bases de rst</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/aides_rst/essai_1.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="les-bases-de-rst">
+<h1><a class="toc-backref" href="#id3" role="doc-backlink">Les bases de rst</a><a class="headerlink" href="#les-bases-de-rst" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><strong>Auteurs</strong> : Chloé Lindingre</p></li>
+<li><p><strong>Date de création</strong> : 15/02/2024.</p></li>
+<li><p><strong>Date de modification</strong> : Feb 19, 2024.</p></li>
+<li><p><strong>Statut du document</strong> : en travaux.</p></li>
+</ul>
+<section id="introduction">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Voici le paragraphe d’Introduction, est une introduction informelle <a class="reference external" href="https://fr.wikipedia.org/wiki/ReStructuredText">reStructuredText</a> (reST), qui est un langage de balisage de texte. Le texte reST est interprété (p. ex., par <a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a>) pour produire des documents HTML pouvant être lus par un navigateur.</p>
+<p>Ceci est un paragraphe, il est plutôt court</p>
+<blockquote>
+<div><p>Ce paragraphe indenté va être rendu comme un bloc en retrait, idéal pour les citations/</p>
+</div></blockquote>
+<p>Là on revient à la ligne.</p>
+</section>
+<section id="styles-de-texte">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Styles de texte</a><a class="headerlink" href="#styles-de-texte" title="Link to this heading"></a></h2>
+<p>Texte en <em>italique</em> avec <code class="docutils literal notranslate"><span class="pre">*italique*</span></code> et texte en <strong>gras</strong> avec <code class="docutils literal notranslate"><span class="pre">**gras**</span></code> ou encore <strong>partielle</strong>ment avec <code class="docutils literal notranslate"><span class="pre">**partielle**\ment</span></code>.
+Ce sont des balises dans le texte (<em>inline markup</em>), pour le faire.</p>
+<p>Pour faire apparaître du texte en police d’empattement fixe, utiliser des doubles guillemets ! <code class="docutils literal notranslate"><span class="pre">text</span> <span class="pre">à</span> <span class="pre">empattement</span> <span class="pre">fixe</span></code> (justement utilisés pour signaler les commandes reST dans ce document). noter qu’aucun bidouillage supplémentaire ne peut être fait à l’intérieur de telles guillemets (p. ex., pas d’italiques).</p>
+<p>Pour utiliser l’un de ces caractères spéciaux dans le texte, il suffit d’utiliser un antislash comme ceci : 5*6=30 qui est en fait écrit <code class="docutils literal notranslate"><span class="pre">5\*6=30</span></code>.</p>
+</section>
+<section id="astuces">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Astuces</a><a class="headerlink" href="#astuces" title="Link to this heading"></a></h2>
+<p>Le balisage en ligne est une sorte de parenthesage et il doit être utilisé en tant que tel, immédiatement avant et après le texte que l’on veut marquer, (sans insérer d’espaces, ni au milieu d’un mot)</p>
+</section>
+<section id="listes">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Listes</a><a class="headerlink" href="#listes" title="Link to this heading"></a></h2>
+<p>Les listes d’items sont soit d’énumération, à puces ou définitions. Pour ces listes, on peut avoir autant de paragraphes et de sous-liste qu’on le souhaite, tant que le côté gauche de leur paragraphe est aligné avec la première ligne.</p>
+<p>Les listes doivent toujours démarrer comme un nouveau paragraphe.</p>
+<ol class="arabic simple">
+<li><p>Nombre</p></li>
+</ol>
+<ol class="upperalpha">
+<li><p>Lettres capitales                                                                                                                                                                                                  et ça peut aller sur plusieurs lignes</p>
+<blockquote>
+<div><p>avec 2 paragraphes</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="loweralpha">
+<li><p>lettres minuscules</p>
+<blockquote>
+<div><ol class="arabic simple" start="3">
+<li><p>avec un sous-liqte démarrant avec un nombre diffrents</p></li>
+<li><p>Les nombres doivent être corrects !</p></li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+<ol class="upperroman simple">
+<li><p>Chiffres romains majuscules</p></li>
+</ol>
+<ol class="lowerroman simple">
+<li><p>chiffres romains minuscules</p></li>
+</ol>
+<ol class="arabic simple">
+<li><p>Encore un nombre</p></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li><p>Encore !</p></li>
+</ol>
+<p>Les listes à puces comment indifféremment par un “-”, “+”, “*”</p>
+<ul>
+<li><p>une liste à puce avec “*”</p>
+<blockquote>
+<div><ul>
+<li><p>une sous-liste à puces avec “-”</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>encore une</p></li>
+<li><p>et là ???</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>un autre item</p></li>
+<li><p>une autre</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>Note : Si un paragraphe commence par un signe pouvant être interpreté comme un énumérateur, le premier caractère sera précédé d’un anti-slash</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;anti-slash&quot;</span><span class="n">A</span><span class="p">.</span><span class="w"> </span><span class="n">Einstein</span><span class="w"> </span><span class="n">est</span><span class="w"> </span><span class="n">intelligent</span>
+</pre></div>
+</div>
+<p>est rendu ainsi :</p>
+<p>A. Einstein est intelligent</p>
+<section id="liste-de-definition">
+<h3>Liste de définition<a class="headerlink" href="#liste-de-definition" title="Link to this heading"></a></h3>
+<p>Au contraire des précédentes, les listes e définition consistent en un terme et la définition de ce terme. Il speuvent être utilisés comme un glossaire, dictionnaire. Le format d’une telle liste est :</p>
+<dl class="simple">
+<dt>Machin</dt><dd><p>La définition de machin, indenté. Noter que le terme est automatiquement mis en gras. Le terme doit tenir en une ligne. La définition tient en un ou plusieurs paragraphes, indentés de la même manière par rapport au terme. Ne pas sauter le ligne entre le terme et sa définition.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="preformatage-code-informatique">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Préformatage (code informatique)</a><a class="headerlink" href="#preformatage-code-informatique" title="Link to this heading"></a></h2>
+<p>Pour inclure un paragraphe de texte préformaté, terminer le bloc par “::”. Le bloc préformaté qui suivra sera terminé quand le texte reviendra au même niveau d’indentation que le texte juste avant le bloc préformaté. Le deux “:” sont convertis en un simple deux-points s’ils ne sont pas précédés d’un espace.</p>
+<p>Un exemple:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="n">Espaces</span><span class="p">,</span><span class="w"> </span><span class="n">retour</span><span class="o">-</span><span class="n">chariot</span><span class="p">,</span><span class="w"> </span><span class="n">toute</span><span class="w"> </span><span class="n">sorte</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">balisage</span><span class="w"> </span><span class="p">(</span><span class="n">comme</span><span class="w"> </span><span class="o">*</span><span class="n">celui</span><span class="o">-</span><span class="n">ci</span><span class="o">*</span><span class="w"> </span><span class="n">ou</span><span class="w"> </span><span class="s">&quot;anti-slash&quot;</span><span class="n">celui</span><span class="o">-</span><span class="n">ci</span><span class="p">)</span><span class="w"> </span><span class="n">sont</span><span class="w"> </span><span class="n">prservés</span><span class="w"> </span><span class="n">dans</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">tels</span><span class="w"> </span><span class="n">blocs</span><span class="p">.</span>
+<span class="n">Voyez</span><span class="w"> </span><span class="n">comme</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="n">ai</span><span class="w"> </span><span class="n">changé</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">niveau</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="n">indentation</span>
+<span class="p">(</span><span class="n">mais</span><span class="w"> </span><span class="n">pas</span><span class="w"> </span><span class="n">suffisamment</span><span class="w"> </span><span class="n">pour</span><span class="w"> </span><span class="n">sortir</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">bloc</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Là j’en suis sortie !!</p>
+<p>Noter que si un paragraphe consiste seulement en “::”, il sera supprimé de l’output (donc pas rendu):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Voici</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">texte</span><span class="w"> </span><span class="n">préformaté</span><span class="p">,</span><span class="w"> </span><span class="n">mais</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">premier</span><span class="w"> </span><span class="s">&quot;::&quot;</span><span class="w"> </span><span class="n">paragraphe</span><span class="w"> </span><span class="n">est</span><span class="w"> </span><span class="n">supprimé</span>
+</pre></div>
+</div>
+</section>
+<section id="sections">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Sections</a><a class="headerlink" href="#sections" title="Link to this heading"></a></h2>
+<p>Plus d’informations <a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickstart.html#sections">là</a></p>
+<p>Pour organisr du texte long en sections, on peut utiliser des titres différents de section.</p>
+</section>
+<section id="titre-de-chapitre-1">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Titre de chapitre 1</a><a class="headerlink" href="#titre-de-chapitre-1" title="Link to this heading"></a></h2>
+<section id="titre-de-section-1-1">
+<h3>Titre de section 1.1<a class="headerlink" href="#titre-de-section-1-1" title="Link to this heading"></a></h3>
+<section id="titre-de-sous-section-1-1-1">
+<h4>Titre de sous-section 1.1.1<a class="headerlink" href="#titre-de-sous-section-1-1-1" title="Link to this heading"></a></h4>
+</section>
+</section>
+<section id="titre-de-section-1-2">
+<h3>Titre de section 1.2<a class="headerlink" href="#titre-de-section-1-2" title="Link to this heading"></a></h3>
+</section>
+</section>
+<section id="titre-chapitre-2">
+<span id="lien-interne"></span><h2><a class="toc-backref" href="#id3" role="doc-backlink">Titre chapitre 2</a><a class="headerlink" href="#titre-chapitre-2" title="Link to this heading"></a></h2>
+<p>il faut noter que chaque titre peut être utilisé comme cible d’un lien interne au document, en utilisant simplement son nom. Pour créer un lien hypertexte avec un titre de document, écrire simplement `Titre Chapitre 2`_ pour avoir un lien <a class="reference internal" href="#titre-chapitre-2">Titre chapitre 2</a>.</p>
+</section>
+<section id="titre-du-document-ou-sous-titre">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Titre du document ou sous-titre</a><a class="headerlink" href="#titre-du-document-ou-sous-titre" title="Link to this heading"></a></h2>
+<p>Le titre du document entier est distinct des autres titres de sections et doit être formaté d’une manière différente. Utiliser une décoration unique au début du document pour son titre. Utiliser une autre décoration unique immédiatement après le titre du document. Exemple</p>
+</section>
+<section id="separation">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Séparation</a><a class="headerlink" href="#separation" title="Link to this heading"></a></h2>
+<p>Une séparation (rendue en HTML avec la balise &lt;hr&gt;) se créée avec la répétition d’au moins 4 caractères de ponctuation, séparation de lignes vides</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">paragraphe</span>
+
+<span class="o">----</span>
+
+<span class="n">paragraphe</span>
+</pre></div>
+</div>
+<p>se rend ainsi :</p>
+<p>paragraphe</p>
+<hr class="docutils" />
+<p>paragraphe</p>
+</section>
+<section id="commentaires">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Commentaires</a><a class="headerlink" href="#commentaires" title="Link to this heading"></a></h2>
+<p>Pour insérer un commentaire qui ne sera pas traité par reST ou Sphinx, faire débuter le paragraphe par “..” .</p>
+</section>
+<section id="tableaux">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Tableaux</a><a class="headerlink" href="#tableaux" title="Link to this heading"></a></h2>
+<p>Plus d’informations <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html#tables">ici</a></p>
+<p>Il y a plusieurs manières de construire des tableaux avec reST et aucune n’est aisée, notamment lorsque les tableaux sont complexes.</p>
+<section id="tableaux-simples">
+<h3>Tableaux simples<a class="headerlink" href="#tableaux-simples" title="Link to this heading"></a></h3>
+<p>Commencent et finissent par une simple ligne de signe “=” . Le signe “-” est utilisé optionnellement pour signaler une fusion de deux colonnes contigues. Un ou pluiseurs espaces signalent les limites de colonnes:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">====</span><span class="w"> </span><span class="o">====</span><span class="w"> </span><span class="o">======</span>
+<span class="n">A</span><span class="w">    </span><span class="n">B</span><span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="n">et</span><span class="w"> </span><span class="n">B</span>
+<span class="o">----</span><span class="w"> </span><span class="o">----</span><span class="w"> </span><span class="o">------</span>
+<span class="o">/</span><span class="w">         </span><span class="n">a</span><span class="w"> </span><span class="n">et</span><span class="w"> </span><span class="n">b</span>
+<span class="o">====</span><span class="w"> </span><span class="o">====</span><span class="w"> </span><span class="o">======</span>
+<span class="n">Faux</span><span class="w"> </span><span class="n">Faux</span><span class="w"> </span><span class="n">Faux</span>
+<span class="n">Vrai</span><span class="w"> </span><span class="n">Faux</span><span class="w"> </span><span class="n">Faux</span>
+<span class="o">====</span><span class="w"> </span><span class="o">====</span><span class="w"> </span><span class="o">======</span>
+</pre></div>
+</div>
+<p>se rend ainsi :</p>
+<blockquote>
+<div><table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>A</p></th>
+<th class="head"><p>B</p></th>
+<th class="head"><p>A et B</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p></p></th>
+<th class="head"></th>
+<th class="head"><p>a et b</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>Faux</p></td>
+<td><p>Faux</p></td>
+<td><p>Faux</p></td>
+</tr>
+<tr class="row-even"><td><p>Vrai</p></td>
+<td><p>Faux</p></td>
+<td><p>Faux</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><strong>Note</strong> : Débuter une ligne par un espace vide rend la ligne entièrement vide. Il convient donc de signaler par un antislash (voir tableau) la première case vide, si elle l’est.</p>
+</section>
+<section id="tableaux-csv">
+<h3>Tableaux CSV<a class="headerlink" href="#tableaux-csv" title="Link to this heading"></a></h3>
+<p>Une autre possibilité est de composer un tableau en spécifiant son format et son contenu ligne à ligne:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">..</span><span class="w"> </span><span class="n">csv</span><span class="o">-</span><span class="n">table</span><span class="o">::</span><span class="w"> </span><span class="n">Délices</span><span class="w"> </span><span class="n">glacés</span><span class="o">!</span>
+<span class="w">        </span><span class="o">:</span><span class="n">header</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;Produit&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Quantité&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Description&quot;</span>
+<span class="w">        </span><span class="o">:</span><span class="n">widths</span><span class="o">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span>
+
+<span class="w">        </span><span class="s">&quot;Albatross&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">2.99</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;On a stick!&quot;</span>
+<span class="w">        </span><span class="s">&quot;Crunchy Frog&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.49</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;If we took the bones out, it wouldn&#39;t be</span>
+<span class="w">         </span><span class="n">crunchy</span><span class="p">,</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">would</span><span class="w"> </span><span class="n">it</span><span class="o">?</span><span class="s">&quot;</span>
+<span class="w">        </span><span class="s">&quot;Gannet Ripple&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.99</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;On a stick!&quot;</span>
+</pre></div>
+</div>
+<p>sera rendu ainsi :</p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Délices glacés!</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 27.3%" />
+<col style="width: 18.2%" />
+<col style="width: 54.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Produit</p></th>
+<th class="head"><p>Quantité</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Albatross</p></td>
+<td><p>2.99</p></td>
+<td><p>On a stick!</p></td>
+</tr>
+<tr class="row-odd"><td><p>Crunchy Frog</p></td>
+<td><p>1.49</p></td>
+<td><p>If we took the bones out, it wouldn’t be
+crunchy, now would it?</p></td>
+</tr>
+<tr class="row-even"><td><p>Gannet Ripple</p></td>
+<td><p>1.99</p></td>
+<td><p>On a stick!</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tableaux-en-liste">
+<h3>Tableaux en liste<a class="headerlink" href="#tableaux-en-liste" title="Link to this heading"></a></h3>
+<p>Il est aussi possible de générer un tableau à partir de la directive list-table, de manière plutôt aisée:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">..</span><span class="w"> </span><span class="n">list</span><span class="o">-</span><span class="n">table</span><span class="o">::</span><span class="w"> </span><span class="n">Délices</span><span class="w"> </span><span class="n">glacés</span><span class="o">!</span>
+<span class="w">   </span><span class="o">:</span><span class="n">widths</span><span class="o">:</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">   </span><span class="o">:</span><span class="n">header</span><span class="o">-</span><span class="n">rows</span><span class="o">:</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Produit</span>
+<span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="n">Quantité</span>
+<span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="n">Description</span>
+<span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Albatross</span>
+<span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="mf">2.99</span>
+<span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="n">On</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">stick</span><span class="o">!</span>
+<span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Crunchy</span><span class="w"> </span><span class="n">Frog</span>
+<span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="mf">1.49</span>
+<span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="n">If</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">took</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">bones</span><span class="w"> </span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">wouldn</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="n">be</span>
+<span class="w">       </span><span class="n">crunchy</span><span class="p">,</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">would</span><span class="w"> </span><span class="n">it</span><span class="o">?</span>
+<span class="w">   </span><span class="o">*</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Gannet</span><span class="w"> </span><span class="n">Ripple</span>
+<span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="mf">1.99</span>
+<span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="n">On</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">stick</span><span class="o">!</span>
+</pre></div>
+</div>
+<p>qui sera rendu ainsi :</p>
+</section>
+</section>
+<section id="tableaux-en-grille">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Tableaux en grille</a><a class="headerlink" href="#tableaux-en-grille" title="Link to this heading"></a></h2>
+<p>Une manière plus complexe de réaliser tous types de tableaux est de considérer que :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Un signe “-” délimite l’extérieur du tableau et les lignes horizontales du tableau ;</p></li>
+<li><p>Un signe “=” délimite le bas de l’entête du tableau ;</p></li>
+<li><p>Un signe “+” signale les intersections entre les lignes verticales et horizontales ;</p></li>
+<li><p>Un signe “|” signale les lignes verticales</p></li>
+</ul>
+</div></blockquote>
+<p>Ainsi le tableau ci-dessous:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">+------------------------+------------+----------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Header</span><span class="w"> </span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="mi">1</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">Header</span><span class="w"> </span><span class="mi">2</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">Header</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span>
+<span class="o">+========================+============+==========+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">body</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="mi">1</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="mi">2</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span>
+<span class="o">+------------------------+------------+----------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">body</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="mi">2</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="n">Cells</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">span</span><span class="w">        </span><span class="o">|</span>
+<span class="o">+------------------------+-----------------------+</span>
+</pre></div>
+</div>
+<p>Sera rendu ainsi :</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Header row, column 1</p></th>
+<th class="head"><p>Header 2</p></th>
+<th class="head"><p>Header 3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>body row 1, column 1</p></td>
+<td><p>column 2</p></td>
+<td><p>column 3</p></td>
+</tr>
+<tr class="row-odd"><td><p>body row 2</p></td>
+<td colspan="2"><p>Cells may span</p></td>
+</tr>
+</tbody>
+</table>
+<p>Comme cela est assez difficile à réaliser sans erreurs, nous conseillons l’utilisation de l’éditeur <a class="reference external" href="https://www.sublimetext.com">SublimeText</a> avec l’extension <a class="reference external" href="https://github.com/mgaitan/sublime-rst-completion">rst-completion</a>, qui permet quasi-automatiquement de réaliser des tableaux complexes.</p>
+</section>
+<section id="notes-de-bas-de-page">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Notes de bas de page</a><a class="headerlink" href="#notes-de-bas-de-page" title="Link to this heading"></a></h2>
+<p>L’appel d’une note de bas de page peut être :</p>
+<ul class="simple">
+<li><p>un nombre d’un ou plusieurs chiffres ;</p></li>
+<li><p>un “#” pour des notes numérotées automatiquement ;</p></li>
+</ul>
+<p>L’appel est inséré ainsi dans le texte <code class="docutils literal notranslate"><span class="pre">[1]_</span></code> , rendu par un lien hypertexte cliquable : <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Chaque corps de note démarre par un double point “..”, une espace l’un des appels ci-dessus entre crochets, une espace, suivi par le corps de la note. Ce dernier est indenté d’au moins 3 espaces et aligné à gauche. Le corps peut être placé n’importe où dans le document (pas seulement à sa fin) :</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">..</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="n">Je</span><span class="w"> </span><span class="n">suis</span><span class="w"> </span><span class="n">un</span><span class="w"> </span><span class="n">corps</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">note</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">bas</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">page</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>est rendu ainsi :</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Je suis un corps de note de bas de page.</p>
+</aside>
+</aside>
+</section>
+<section id="liens-hypertextes">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Liens hypertextes</a><a class="headerlink" href="#liens-hypertextes" title="Link to this heading"></a></h2>
+<p>Nous avons déjà vu plus haut (<a class="reference internal" href="#titre-chapitre-2">Titre Chapitre 2</a>) le moyen d’insérer des liens hypertextes référant à des sections du même document (ancres).</p>
+<section id="liens-externes">
+<h3>Liens externes<a class="headerlink" href="#liens-externes" title="Link to this heading"></a></h3>
+<p>Référer à un lien hypertexte externe peut se faire, soit ainsi:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="n">ReStructuredText</span><span class="w"> </span><span class="n">Primer</span><span class="w"> </span><span class="o">&lt;</span><span class="n">http</span><span class="o">:</span><span class="c1">//docutils.sourceforge.net/docs/user/rst/quickstart.html&gt;`_</span>
+</pre></div>
+</div>
+<p>qui sera rendu ainsi :
+<a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickstart.html">A ReStructuredText Primer</a></p>
+<p>Soit ainsi:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="n">ReStructuredText</span><span class="w"> </span><span class="n">Primer_</span><span class="w"> </span><span class="p">(</span><span class="n">hyperlien</span><span class="p">)</span>
+<span class="p">..</span><span class="w"> </span><span class="n">_ReStructuredText</span><span class="w"> </span><span class="n">Primer</span><span class="o">:</span><span class="w"> </span><span class="n">http</span><span class="o">:</span><span class="c1">//docutils.sourceforge.net/docs/user/rst/quickstart.html (cible, indiquée plus loin dans le document, ou à sa toute fin)</span>
+</pre></div>
+</div>
+<p>Ce qui sera rendu ainsi (noter, en visualisant le code source de la page, la spécification de la cible à la toute fin du document). Cela peut d’ailleurs être pratique d’avoir ainsi un certain nombre de liens qui reviennent souvent dans une série de documents (adresses, etc.) : <a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickstart.html">A ReStructuredText Primer</a>. D’autres moyens de réaliser des liens entre documents Sphinx sont décrits ici</p>
+</section>
+</section>
+<section id="substitutions">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Substitutions</a><a class="headerlink" href="#substitutions" title="Link to this heading"></a></h2>
+<p>Il est possible de spécifier un ou plusieurs mots (bloc), censés revenir souvent dans un document, qui remplaceront à la compilation le terme qui les représente. Cela est utile pour représenter des mots, une image (mais pas des liens hypertextes). Voici comment représenter le bloc et le mot qui les représente:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Voici</span><span class="w"> </span><span class="n">un</span><span class="w"> </span><span class="o">|</span><span class="n">mot</span><span class="o">|</span><span class="w"> </span><span class="n">à</span><span class="w"> </span><span class="n">remplacer</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>et comment on indique le bloc qui va remplacer le mot (à placer n’importe oÃ¹ dans le doc, p. ex. en toute fin):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">..</span><span class="w"> </span><span class="o">|</span><span class="n">mot</span><span class="o">|</span><span class="w"> </span><span class="n">replace</span><span class="o">::</span><span class="w"> </span><span class="n">téléphone</span>
+</pre></div>
+</div>
+<p>Cela sera rendu ainsi :</p>
+<p>Voici un téléphone à remplacer.</p>
+<p>Il existe également les termes réservés suivants : <code class="docutils literal notranslate"><span class="pre">|today|</span></code>, qui insère la date courante ; ``
+ et 0.0.1 qui indiquent resp. les numéros de la version et de la sous-version du projet.</p>
+</section>
+<section id="directives">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Directives</a><a class="headerlink" href="#directives" title="Link to this heading"></a></h2>
+<p>Passons maintenant à la description de directives, qui étendent les capacités de reST. Il est à noter qu’on ne peut utiliser de directives avec du texte mis en forme (gras, italiques).</p>
+<section id="insertion-de-html">
+<h3>Insertion de HTML<a class="headerlink" href="#insertion-de-html" title="Link to this heading"></a></h3>
+<p>La directive <code class="docutils literal notranslate"><span class="pre">:raw:</span></code> permet d’insérer du code HTML (ou LaTeX) dans un document reST:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="w">     </span><span class="p">..</span><span class="w"> </span><span class="n">raw</span><span class="o">::</span><span class="w"> </span><span class="n">html</span>
+
+<span class="o">&lt;</span><span class="n">hr</span><span class="w"> </span><span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>sera rendu ainsi</p>
+<hr width=50 size=10><p>Cela peut être très utile, notamment pour insérer des vidéos, du QCM, ou autres éléments HTML.</p>
+</section>
+<section id="table-des-matieres">
+<h3>Table des matières<a class="headerlink" href="#table-des-matieres" title="Link to this heading"></a></h3>
+<p>Plus d’informations <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html#table-of-contents">au lien</a></p>
+<p>On peut afficher la table des matières d’un document, p. ex à son début. La directive est <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">contents::</span></code>. Les options sont les suivantes. “depth” indique la profondeur des sections listées dans la table, “local” commande la production d’une table correspondant à la section dans laquelle la directive est située ; “backlinks” produit les liens “en retour” de chaque (sous-titre) jusqu’à la table:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">..</span><span class="w"> </span><span class="n">contents</span><span class="o">::</span><span class="w"> </span><span class="n">Table</span><span class="w"> </span><span class="n">des</span><span class="w"> </span><span class="n">matières</span>
+<span class="w">        </span><span class="o">:</span><span class="n">depth</span><span class="o">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">        </span><span class="o">:</span><span class="n">local</span><span class="o">:</span>
+<span class="w">        </span><span class="o">:</span><span class="n">backlinks</span><span class="o">:</span><span class="w"> </span><span class="n">top</span>
+</pre></div>
+</div>
+<p>est rendu ainsi:</p>
+<nav class="contents" id="id3">
+<p class="topic-title">Table des matières</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#les-bases-de-rst" id="id6">Les bases de rst</a></p>
+<ul>
+<li><p><a class="reference internal" href="#introduction" id="id7">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#styles-de-texte" id="id8">Styles de texte</a></p></li>
+<li><p><a class="reference internal" href="#astuces" id="id9">Astuces</a></p></li>
+<li><p><a class="reference internal" href="#listes" id="id10">Listes</a></p></li>
+<li><p><a class="reference internal" href="#preformatage-code-informatique" id="id11">Préformatage (code informatique)</a></p></li>
+<li><p><a class="reference internal" href="#sections" id="id12">Sections</a></p></li>
+<li><p><a class="reference internal" href="#titre-de-chapitre-1" id="id13">Titre de chapitre 1</a></p></li>
+<li><p><a class="reference internal" href="#titre-chapitre-2" id="id14">Titre chapitre 2</a></p></li>
+<li><p><a class="reference internal" href="#titre-du-document-ou-sous-titre" id="id15">Titre du document ou sous-titre</a></p></li>
+<li><p><a class="reference internal" href="#separation" id="id16">Séparation</a></p></li>
+<li><p><a class="reference internal" href="#commentaires" id="id17">Commentaires</a></p></li>
+<li><p><a class="reference internal" href="#tableaux" id="id18">Tableaux</a></p></li>
+<li><p><a class="reference internal" href="#tableaux-en-grille" id="id19">Tableaux en grille</a></p></li>
+<li><p><a class="reference internal" href="#notes-de-bas-de-page" id="id20">Notes de bas de page</a></p></li>
+<li><p><a class="reference internal" href="#liens-hypertextes" id="id21">Liens hypertextes</a></p></li>
+<li><p><a class="reference internal" href="#substitutions" id="id22">Substitutions</a></p></li>
+<li><p><a class="reference internal" href="#directives" id="id23">Directives</a></p></li>
+<li><p><a class="reference internal" href="#formules-mathematiques" id="id24">Formules mathématiques</a></p></li>
+<li><p><a class="reference internal" href="#directives-html" id="id25">Directives HTML</a></p></li>
+<li><p><a class="reference internal" href="#et-apres" id="id26">Et après ?</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+</section>
+<section id="images">
+<h3>Images<a class="headerlink" href="#images" title="Link to this heading"></a></h3>
+<p>Pour inclure une image dans votre document, utiliser la directive <code class="docutils literal notranslate"><span class="pre">image</span></code>. Par exemple :: <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">image::</span> <span class="pre">images/computer.png</span></code> sera rendu ainsi</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">..</span><span class="w"> </span><span class="n">image</span><span class="o">::</span><span class="w"> </span><span class="n">images</span><span class="o">/</span><span class="n">computer</span><span class="p">.</span><span class="n">png</span>
+</pre></div>
+</div>
+<p>Il est possible d’ajouter des informations de taille, d’échelle, d’alignement et de texte alternatif</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">..</span><span class="w"> </span><span class="n">image</span><span class="o">::</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">clindingre01</span><span class="o">/</span><span class="n">ws_ramsai_docs</span><span class="o">/</span><span class="n">RAMSAI</span><span class="o">/</span><span class="n">ramsai</span><span class="o">/</span><span class="n">sphinx</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">ordinateur</span><span class="p">.</span><span class="n">png</span>
+<span class="w">        </span><span class="o">:</span><span class="n">height</span><span class="o">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">        </span><span class="o">:</span><span class="n">width</span><span class="o">:</span><span class="w"> </span><span class="mi">200</span>
+<span class="w">        </span><span class="o">:</span><span class="n">scale</span><span class="o">:</span><span class="w"> </span><span class="mi">50</span>
+<span class="w">        </span><span class="o">:</span><span class="n">align</span><span class="o">:</span><span class="w"> </span><span class="n">center</span>
+<span class="w">        </span><span class="o">:</span><span class="n">alt</span><span class="o">:</span><span class="w"> </span><span class="n">ordinateur</span>
+</pre></div>
+</div>
+</section>
+<section id="figures">
+<h3>Figures<a class="headerlink" href="#figures" title="Link to this heading"></a></h3>
+<p>XXX</p>
+</section>
+<section id="encadre-flottant">
+<h3>Encadré flottant<a class="headerlink" href="#encadre-flottant" title="Link to this heading"></a></h3>
+<p>Il est possible d’insérer un encadré flottant (p. ex., pour réaliser des encadrés indépendants du texte, un résumé, etc.), flottant à droite du texte courant, avec la syntaxe suivante:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">..</span><span class="w"> </span><span class="n">sidebar</span><span class="o">::</span><span class="w"> </span><span class="n">Titre</span><span class="w"> </span><span class="n">du</span><span class="w"> </span><span class="n">texte</span><span class="w"> </span><span class="n">flottant</span>
+<span class="w">        </span><span class="o">:</span><span class="n">subtitle</span><span class="o">:</span><span class="w"> </span><span class="n">Texte</span><span class="w"> </span><span class="n">optionnel</span>
+
+<span class="w">        </span><span class="n">Le</span><span class="w"> </span><span class="n">texte</span><span class="w"> </span><span class="n">flottant</span><span class="w"> </span><span class="n">est</span><span class="w"> </span><span class="n">ici</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>Qui sera rendu comme le texte à droite.</p>
+<aside class="sidebar">
+<p class="sidebar-title">Titre du texte flottant</p>
+<p class="sidebar-subtitle">Texte optionnel</p>
+<p>Le texte flottant est ici.</p>
+</aside>
+</section>
+<section id="paragraphes-specifiques-admonitions">
+<span id="rest-admonitions"></span><h3>Paragraphes spécifiques (admonitions)<a class="headerlink" href="#paragraphes-specifiques-admonitions" title="Link to this heading"></a></h3>
+<p>Se référer à … pour les admonitions ajoutées par Sphinx.</p>
+<p>Il existe de nombreux moyens de mettre en valeur un paragraphe. Les voici, appliquées au même paragraphe, respectivement <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">admonition::</span></code>, <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">note::</span></code>, <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">attention::</span></code>, <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">caution::</span></code>, <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">danger::</span></code>, <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">error::</span></code>, <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">hint::``</span></code>.., <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">important::</span></code>, <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">tip</span></code>, <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">warning::</span></code>. Il faut aussi noter que le rendu de chaque admonition peut varier selon le thème choisi, et qu’il convient de les utiliser de manière cohérente et mesurée tout au long des documents. L’admonition varie en fonction de la langue définie dans le fichier conf.py :</p>
+<div class="admonition-admonition-generique admonition">
+<p class="admonition-title">admonition générique</p>
+<p>Un texte d’admonition, avec l’intitulé que l’on veut.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>un paragraphe que je veux mettre en évidence.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>un paragraphe que je veux mettre en évidence.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>un paragraphe que je veux mettre en évidence.</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>un paragraphe que je veux mettre en évidence.</p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>un paragraphe que je veux mettre en évidence.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>un paragraphe que je veux mettre en évidence.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>un paragraphe que je veux mettre en évidence.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>un paragraphe que je veux mettre en évidence.</p>
+</div>
+</section>
+</section>
+<section id="formules-mathematiques">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Formules mathématiques</a><a class="headerlink" href="#formules-mathematiques" title="Link to this heading"></a></h2>
+<p>Il est possible d’insérer, dans le texte ou en tant que bloc spécifique, des formules mathématiques (utiliser la syntaxe LaTeX). Voici le bloc:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">..</span><span class="w"> </span><span class="n">math</span><span class="o">::</span>
+
+<span class="w">        </span><span class="n">alpha_t</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">P</span><span class="p">(</span><span class="n">O_1</span><span class="p">,</span><span class="w"> </span><span class="n">O_2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">O_t</span><span class="p">,</span><span class="w"> </span><span class="n">q_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">S_i</span><span class="w"> </span><span class="n">lambda</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>qui sera rendu :</p>
+<aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">alpha_t(i) = P(O_1, O_2, ... O_t, q_t = S_i lambda)</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-01-21&gt;
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+! Emergency stop.
+&lt;read *&gt; 
+         
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</aside>
+<p>et les formules dans le texte : <code class="docutils literal notranslate"><span class="pre">:math:`A_\text{c}</span> <span class="pre">=</span> <span class="pre">(\pi/4)</span> <span class="pre">d^2</span></code>, sera rendu ainsi : <aside class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">A_\text{c} = (\pi/4) d^2</span>)</p>
+<p>latex exited with error
+[stdout]
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2021-11-15&gt; patch level 1
+L3 programming layer &lt;2022-01-21&gt;
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+
+! LaTeX Error: File `anyfontsize.sty' not found.
+
+Type X to quit or &lt;RETURN&gt; to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+! Emergency stop.
+&lt;read *&gt; 
+         
+l.8 \usepackage
+               {bm}^^M
+No pages of output.
+Transcript written on math.log.
+</p>
+</aside>
+.</p>
+</section>
+<section id="directives-html">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Directives HTML</a><a class="headerlink" href="#directives-html" title="Link to this heading"></a></h2>
+<p>Il existe une série de directives spécifiques HTML permettant d’ajouter des méta-données ou des balises HTML dans un document reST. La directive <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">meta::</span></code> permet d’ajouter des méta-données dans le document (balise meta).</p>
+</section>
+<section id="et-apres">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Et après ?</a><a class="headerlink" href="#et-apres" title="Link to this heading"></a></h2>
+<p>Ce document est une simple introduction à reST. Plus d’informations ici :</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://aful.org/wikis/interop/ReStructuredText">Intro à reST en français (AFUL)</a></p></li>
+<li><p><a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html#hyperlink-targets">Quick reST</a></p></li>
+<li><p><a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html">L’ensemble des directives</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../userguide/blabla.html" class="btn btn-neutral float-left" title="Test nouvelle partielle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, ICUBE Laboratory, University of Strasbourg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
