@@ -1,0 +1,10 @@
+keyence_controler:
+  ros__parameters:
+    deviceId: 0
+    abyIpAddress_1: 192
+    abyIpAddress_2: 168
+    abyIpAddress_3: 0
+    abyIpAddress_4: 1
+    wPortNo: 24691
+    HighSpeedPortNo: 24692
+    
