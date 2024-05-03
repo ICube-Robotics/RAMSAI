@@ -7,3 +7,5 @@ install/
 3D_Printer/log
 3D_printer/src/printer3d_profile_capture/external
 3D_printer/src/printer3d_keyence_profile_capture/src/driver
+3D_printer/src/printer3d_keyence_profile_capture/launch/__pycache__
+3D_printer/src/printer3d_keyence_data_acquisition_test/launch/__pycache__
