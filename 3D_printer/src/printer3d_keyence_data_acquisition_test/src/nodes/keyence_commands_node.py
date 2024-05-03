@@ -73,7 +73,7 @@ if __name__ == '__main__':
     time.sleep(10)
     keyence_command_node.get_logger().info("lancement sauvegarde")
     keyence_command_node.send_command('laser_off')
-    keyence_command_node.ask_for_buffer_saving('/home/gulltor/Desktop/Keyence_control/LJ-X8000A_PyLib_1_3_0_2/ros2_keyence_controler/profiles.npy')
+    keyence_command_node.ask_for_buffer_saving('/home/gulltor/Ramsai_Robotics/Keyence_data/profiles.npy')
     keyence_command_node.send_command('laser_on')
 
 

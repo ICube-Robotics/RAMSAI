@@ -6,7 +6,7 @@ import yaml
 
 def generate_launch_description():
     config = os.path.join(
-        get_package_share_directory('keyence_profile_service_caller'),
+        get_package_share_directory('printer3d_keyence_data_acquisition_test'),
         'config',
         'params.yaml'
         )
@@ -16,13 +16,13 @@ def generate_launch_description():
 
     return LaunchDescription([
         Node(
-            package='keyence_controler',
+            package='printer3d_keyence_profile_capture',
             namespace='measure_process',
             executable='keyence_control_node.py',
             name='keyence_control_node'
         ),
         Node(
-            package='keyence_profile_service_caller',
+            package='printer3d_keyence_data_acquisition_test',
             namespace='measure_process',
             executable='keyence_commands_node.py',
             name='keyence_commands_node'
