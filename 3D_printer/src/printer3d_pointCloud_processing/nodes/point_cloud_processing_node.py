@@ -22,6 +22,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 import random
 import pyransac3d as pyrsc
+from math import sqrt
 
 """ parametres du noeuds ROS, à mettre dans un fichier de config a la fin"""
 basic_limit_for_reflexions = 12
@@ -60,8 +61,6 @@ class PointCloudProcessingNode(Node):
                 data[i,j,1] = i*0.3
         return data
 
-    
-
     def flatten_point_cloud(self,inputPointCloud):
         if len(inputPointCloud.shape) == 2:
             outputPointCloud = inputPointCloud
@@ -79,15 +78,68 @@ class PointCloudProcessingNode(Node):
         savedPoints = np.array(savedPoints)
         return savedPoints
 
-    def select_layer_points(self,inputPointCloud):
+    def find_layer_barycentre(self, inputPointCloud, epsilon):
+
         treatedPointCloud = self.remove_inf_value(inputPointCloud)
         shapes = treatedPointCloud.shape
         savedPoints = []
+
         for i in range(0,shapes[0]):
             if treatedPointCloud[i,0]>self.x1 and treatedPointCloud[i,0]<self.x2 and treatedPointCloud[i,1]>self.y1 and treatedPointCloud[i,1]<self.y2:
                 savedPoints.append(treatedPointCloud[i,:])
         savedPoints = np.array(savedPoints)
+
+        zMoy = 0
+        newShape = savedPoints.shape
+        for i in range(0, newShape[0]):
+            zMoy += savedPoints[i,2]
+        zMoy /= newShape[0]
+
+        print(savedPoints.shape)
+        print(zMoy)
+
+        xg = 0
+        yg = 0
+        nPts = 0
+
+        for i in range(0,shapes[0]):
+            if treatedPointCloud[i,2]>zMoy-epsilon and treatedPointCloud[i,2]<zMoy+epsilon:
+                nPts += 1
+                xg += treatedPointCloud[i,0]
+                yg += treatedPointCloud[i,1]
+
+        xg /= nPts
+        yg /= nPts
+        return (xg, yg)
+
+    def select_points_of_layer(self, inputPointCloud, xDomain, yDomain):
+
+        treatedPointCloud = self.remove_inf_value(inputPointCloud)
+        shapes = treatedPointCloud.shape
+        savedPoints = []
+        for i in range(0,shapes[0]):
+            if      treatedPointCloud[i,0] > xDomain[0] \
+                and treatedPointCloud[i,0] < xDomain[1] \
+                and treatedPointCloud[i,1] > yDomain[0] \
+                and treatedPointCloud[i,1] < yDomain[1]:
+                savedPoints.append(treatedPointCloud[i,:])
+        savedPoints = np.array(savedPoints)
         return savedPoints
+
+    def get_Mj(self,layerPointCloud, layerNumber, layerHeight):
+        shapes = layerPointCloud.shape
+        Mj = 0
+        for i in range(0,shapes[0]):
+            Mj += layerPointCloud[i,2]
+        return (Mj/shapes[0])-(layerHeight*layerNumber)
+
+    def get_Sj(self,layerPointCloud,Mj):
+        shapes = layerPointCloud.shape
+        Sj = 0
+        for i in range(0,shapes[0]):
+            Sj += (layerPointCloud[i,2]-Mj)**2
+        Sj /= shapes[0]
+        return sqrt(Sj)
 
     def remove_inf_value(self,inputPointCloud):
         inputPointCloud = self.flatten_point_cloud(inputPointCloud)
@@ -183,11 +235,9 @@ class PointCloudProcessingNode(Node):
 
     def tranform_point_cloud(self,inputPointCloud):
         outputPointCloud = np.zeros(inputPointCloud.shape)
-
         inputShape = inputPointCloud.shape
         for i in range(0,inputShape[0]):
             outputPointCloud[i,:] = np.dot(self.rotation_matrix, inputPointCloud[i,:]) - self.translation_matrix
-
         return outputPointCloud
 
     def decimate_point_cloud(self,inputPointCloud,decimationRate):
@@ -263,20 +313,41 @@ if __name__ == '__main__':
     #point_cloud_processing_node.ask_for_plate_limits(layer_3)
     point_cloud_processing_node.xinf = -40.311554355006095
     point_cloud_processing_node.xsup = 4
-    filtered_scan = point_cloud_processing_node.remove_non_used_plate_points(layer_3)
-    reference_layer_filtered = point_cloud_processing_node.remove_non_used_plate_points(reference_layer)
+
+    filtered_scan               = point_cloud_processing_node.remove_non_used_plate_points(layer_3)
+
+    reference_layer_filtered    = point_cloud_processing_node.remove_non_used_plate_points(reference_layer)
+
     point_cloud_processing_node.transformation_creation(reference_layer_filtered)
-    layer_3_transformed = point_cloud_processing_node.tranform_point_cloud(filtered_scan)
+
+    layer_3_transformed         = point_cloud_processing_node.tranform_point_cloud(filtered_scan)
+
     point_cloud_processing_node.plot_point_cloud(layer_3_transformed)
-    """
+
     point_cloud_processing_node.ask_for_points_of_plate(filtered_scan)
-    layer_points = point_cloud_processing_node.select_layer_points(filtered_scan)
-    point_cloud_processing_node.barycentre_calculation(layer_points)
-    point_cloud_processing_node.plot_point_cloud(layer_points)
+    [xg, yg] = point_cloud_processing_node.find_layer_barycentre(filtered_scan, 0.04)
+    print("( ",xg," , ",yg," )")
+
+
     point_cloud_list = [None]*122
+    Mj = [None]*122
+    Sj = [None]*122
+
     for i in range(0,122):
         point_cloud_list[i] = point_cloud_processing_node.load_scan('/home/gulltor/Ramsai_Robotics/history/impression_base_avec_retraction_20_pourcents/scan/layer_scan_'+str(i)+'.npy')
         point_cloud_list[i] = point_cloud_processing_node.remove_non_used_plate_points(point_cloud_list[i])
+        point_cloud_list[i] = point_cloud_processing_node.select_points_of_layer(point_cloud_list[i], [xg-7, xg+7], [yg-7, yg+7])
+        Mj[i] = point_cloud_processing_node.get_Mj(point_cloud_list[i], i, 0.41)
+        Sj[i] = point_cloud_processing_node.get_Sj(point_cloud_list[i],Mj[i])
         point_cloud_processing_node.get_logger().info('layer : '+str(i))
-    """
+
+    plt.figure()
+    plt.plot(Mj)
+    plt.show()
+
+    plt.figure()
+    plt.plot(Sj)
+    plt.show()
+
+
     rclpy.shutdown()
