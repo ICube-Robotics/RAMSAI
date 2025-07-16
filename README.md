@@ -5,6 +5,10 @@
 
 Github repository for the ANR RAMSAI project.
 
+# Getting started
+
+TODO
+
 ## About
 
 **For more information, please check the [documentation](https://icube-robotics.github.io/RAMSAI/).**
