@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Package ramsai_planning &mdash; RAMSAI 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Documentation" href="../documentation/documentation.html" />
+    <link rel="prev" title="Package ramsai_description" href="ramsai_description.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            RAMSAI
+              <img src="../_static/logo-icube.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Project introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages description</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ramsai_bringup.html">Package ramsai_bringup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ramsai_description.html">Package ramsai_description</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Package ramsai_planning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#package-ramsai-planning-content">Package <code class="code docutils literal notranslate"><span class="pre">ramsai_planning</span></code> content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#path-files-types">Path files types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#planners">Planners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#path-configuration-files">Path configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#source-files">Source files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-helper-tools-hpp-file">The <code class="docutils literal notranslate"><span class="pre">helper_tools.hpp</span></code> file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-robot-cartesian-ompl-cpp-file">The <code class="docutils literal notranslate"><span class="pre">robot_cartesian_ompl.cpp</span></code> file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-robot-cartesian-pilz-cpp-file">The <code class="docutils literal notranslate"><span class="pre">robot_cartesian_pilz.cpp</span></code> file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-robot-cartesian-hybrid-planning-cpp-file">The <code class="docutils literal notranslate"><span class="pre">robot_cartesian_hybrid_planning.cpp</span></code> file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">The <code class="docutils literal notranslate"><span class="pre">robot_cartesian_ompl.cpp</span></code> file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/documentation.html">Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart/start.html">Start robot configuration, path planning and execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/example_lancement_trajectoire.html">Trajectories examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../userguide/blabla.html">Test nouvelle partielle</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Aides RST</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../aides_rst/essai_1.html">Les bases de rst</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RAMSAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Package ramsai_planning</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/packages_description/ramsai_planning.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="package-ramsai-planning">
+<h1>Package ramsai_planning<a class="headerlink" href="#package-ramsai-planning" title="Link to this heading"></a></h1>
+<nav class="contents local" id="summary">
+<p class="topic-title">Summary</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#package-ramsai-planning-content" id="id2">Package <code class="code docutils literal notranslate"><span class="pre">ramsai_planning</span></code> content</a></p></li>
+<li><p><a class="reference internal" href="#path-files-types" id="id3">Path files types</a></p></li>
+<li><p><a class="reference internal" href="#planners" id="id4">Planners</a></p></li>
+<li><p><a class="reference internal" href="#path-configuration-files" id="id5">Path configuration files</a></p></li>
+<li><p><a class="reference internal" href="#source-files" id="id6">Source files</a></p>
+<ul>
+<li><p><a class="reference internal" href="#the-helper-tools-hpp-file" id="id7">The <code class="docutils literal notranslate"><span class="pre">helper_tools.hpp</span></code> file</a></p></li>
+<li><p><a class="reference internal" href="#the-robot-cartesian-ompl-cpp-file" id="id8">The <code class="docutils literal notranslate"><span class="pre">robot_cartesian_ompl.cpp</span></code> file</a></p></li>
+<li><p><a class="reference internal" href="#the-robot-cartesian-pilz-cpp-file" id="id9">The <code class="docutils literal notranslate"><span class="pre">robot_cartesian_pilz.cpp</span></code> file</a></p></li>
+<li><p><a class="reference internal" href="#the-robot-cartesian-hybrid-planning-cpp-file" id="id10">The <code class="docutils literal notranslate"><span class="pre">robot_cartesian_hybrid_planning.cpp</span></code> file</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id11">The <code class="docutils literal notranslate"><span class="pre">robot_cartesian_ompl.cpp</span></code> file</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<hr class="docutils" />
+<section id="package-ramsai-planning-content">
+<h2><a class="toc-backref" href="#summary" role="doc-backlink">Package <code class="code docutils literal notranslate"><span class="pre">ramsai_planning</span></code> content</a><a class="headerlink" href="#package-ramsai-planning-content" title="Link to this heading"></a></h2>
+<p><code class="code docutils literal notranslate"><span class="pre">ramsai_planning</span></code> is the package used to plan and launch a given trajectory. Its structure is as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">ramsai_planning</span>
+<span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="o">/</span><span class="n">config</span>
+<span class="w">    </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="o">/</span><span class="n">example_apt</span>
+<span class="w">        </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="p">...</span>
+<span class="w">    </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">robot_cartesian_config</span><span class="p">.</span><span class="n">yaml</span>
+<span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="o">/</span><span class="n">include</span>
+<span class="w">    </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="o">/</span><span class="n">ramsai_planning</span>
+<span class="w">        </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">global_planning_pipeline</span><span class="p">.</span><span class="n">h</span>
+<span class="w">        </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">servo_sampler</span><span class="p">.</span><span class="n">h</span>
+<span class="w">        </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">servo_solver</span><span class="p">.</span><span class="n">h</span>
+<span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="o">/</span><span class="n">launch</span>
+<span class="w">    </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">cancel_hybrid_planning</span><span class="p">.</span><span class="n">launch</span><span class="p">.</span><span class="n">py</span>
+<span class="w">    </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">robot_cartesian_hybrid_planning</span><span class="p">.</span><span class="n">launch</span><span class="p">.</span><span class="n">py</span>
+<span class="w">    </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">robot_cartesian_ompl</span><span class="p">.</span><span class="n">launch</span><span class="p">.</span><span class="n">py</span>
+<span class="w">    </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">robot_cartesian_pilz</span><span class="p">.</span><span class="n">launch</span><span class="p">.</span><span class="n">py</span>
+<span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="o">/</span><span class="n">src</span>
+<span class="w">    </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">cancel_hybrid_planning</span><span class="p">.</span><span class="n">cpp</span>
+<span class="w">    </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">global_planning_pipeline</span><span class="p">.</span><span class="n">cpp</span>
+<span class="w">    </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">helper_tools</span><span class="p">.</span><span class="n">hpp</span>
+<span class="w">    </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">robot_cartesian_hybrid_planning</span><span class="p">.</span><span class="n">cpp</span>
+<span class="w">    </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">robot_cartesian_ompl</span><span class="p">.</span><span class="n">cpp</span>
+<span class="w">    </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">robot_cartesian_pilz</span><span class="p">.</span><span class="n">cpp</span>
+<span class="w">    </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">servo_sampler</span><span class="p">.</span><span class="n">cpp</span>
+<span class="w">    </span><span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">servo_solver</span><span class="p">.</span><span class="n">cpp</span>
+<span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span>
+<span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">package</span><span class="p">.</span><span class="n">xml</span>
+<span class="o">|</span><span class="n">__</span><span class="w"> </span><span class="n">plugins</span><span class="p">.</span><span class="n">xml</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="path-files-types">
+<h2><a class="toc-backref" href="#summary" role="doc-backlink">Path files types</a><a class="headerlink" href="#path-files-types" title="Link to this heading"></a></h2>
+<p>The <code class="code docutils literal notranslate"><span class="pre">example_apt</span></code> folder brings together all the trajectory codes. These codes are <em>.apt</em> or <em>.csv</em> codes.</p>
+<ul>
+<li><p><em>.apt</em> files</p>
+<blockquote>
+<div><p>The .apt files provide a set of points to be passed by the tool. The file contains as many lines as there are points. Each line is of the form</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">GOTO</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">-50.0000000000</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mf">-24.2464504301</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mf">32.9182637039</span><span class="w"> </span><span class="n">$</span>
+<span class="mf">.0000000000</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mf">.3420201433</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="mf">.9396926208</span>
+</pre></div>
+</div>
+<p>This can be read as G-Code. The <code class="docutils literal notranslate"><span class="pre">GOTO</span> <span class="pre">/</span></code> starts the command line to move to a point. This is followed by three x y and z coordinates in meters.
+Position coordinates are relative to the robot point <code class="docutils literal notranslate"><span class="pre">(0,0,0)</span></code>, i.e. the origin of its base. A separator <code class="docutils literal notranslate"><span class="pre">$</span></code> separates position coordinates from tool rotation coordinates. These coordinates represent the angle at which the tool is rotated. Here, these numbers are projections of the nozzle director vector onto the x, y and z axes of the robot base frame. With this command line, the tool will go to the point <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-50.0000000000m</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">-24.2464504301m</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span> <span class="pre">=</span> <span class="pre">32.9182637039m</span></code> and will orientate the tool with a projection of its director vector on <code class="docutils literal notranslate"><span class="pre">y</span></code> of <code class="docutils literal notranslate"><span class="pre">0.3420201433</span></code> times its length and on <code class="docutils literal notranslate"><span class="pre">z</span></code> of <code class="docutils literal notranslate"><span class="pre">0.9396926208</span></code> times its length.</p>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<ul>
+<li><p><em>.csv</em> files</p>
+<blockquote>
+<div><p>à remplir…</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="planners">
+<h2><a class="toc-backref" href="#summary" role="doc-backlink">Planners</a><a class="headerlink" href="#planners" title="Link to this heading"></a></h2>
+<p>For the time being, two built-in MoveIt planners can be used to plan trajectories contained in <em>.apt</em> and <em>.csv</em> files: <a class="reference external" href="https://ros-planning.github.io/moveit_tutorials/doc/ompl_interface/ompl_interface_tutorial.html">Open Motion Planning Library (OMPL)</a>  et <a class="reference external" href="https://ros-planning.github.io/moveit_tutorials/doc/pilz_industrial_motion_planner/pilz_industrial_motion_planner.html#">Pilz indulstrial Motion Planner</a> .</p>
+</section>
+<hr class="docutils" />
+<section id="path-configuration-files">
+<h2><a class="toc-backref" href="#summary" role="doc-backlink">Path configuration files</a><a class="headerlink" href="#path-configuration-files" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/**:</span>
+<span class="go">ros__parameters:</span>
+<span class="go">    waypoint_file_type: &quot;apt&quot;</span>
+<span class="go">    waypoint_file_path: &quot;dev/RAMSAI/ramsai_planning/config/example_apt/1-1_plan_3x.apt&quot;</span>
+<span class="go">    shift: [0.0, 0.7, 0.2]</span>
+<span class="go">    scale: 0.001</span>
+<span class="go">    velcocity_scaling: 0.2</span>
+<span class="go">    acceleration_scaling: 0.1</span>
+<span class="go">    plot_waypoints: true</span>
+<span class="go">    plot_frames: true</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>waypoint_file_type</strong> : specifies the file type used to store route points (.csv or .apt). In this case, it is set to “apt”, which means that waypoints are stored in an <code class="docutils literal notranslate"><span class="pre">.apt</span></code> file.</p></li>
+<li><p><strong>waypoint_file_path</strong> : specifies the full path to the pathpoint file. In this case it is set to <code class="docutils literal notranslate"><span class="pre">dev/RAMSAI/ramsai_planning/config/example_apt/1-1_plan_3x.apt</span></code>.</p></li>
+<li><p><strong>shift</strong> : specifies an offset vector to be applied to trajectory point coordinates. In this example, it is set to <code class="docutils literal notranslate"><span class="pre">[0.0,</span> <span class="pre">0.7,</span> <span class="pre">0.2]</span></code>, which means that there will be an offset of 0.7 units on the Y axis and 0.2 units on the Z axis.</p></li>
+<li><p><strong>scale</strong> : specifies a scaling factor to be applied to path point coordinates. In this example, it is set to 0.001, which means that coordinates will be multiplied by 0.001 (from meter to milimeter).</p></li>
+<li><p><strong>velcocity_scaling</strong> : specifies the speed scale for trajectory generation. In this example, it is set to 0.2.</p></li>
+<li><p><strong>acceleration_scaling</strong> : specifies the acceleration scale for trajectory generation. In this example, it is set to 0.1.</p></li>
+<li><p><strong>plot_waypoints</strong> : specifies whether or not trajectory points should be displayed in a visualization tool (RViz). In this example, it is set to true.</p></li>
+<li><p><strong>plot_frames</strong> : specifies whether or not the tool marks for each point should be displayed in the visualization tool (Rviz). Here it is set to true.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="source-files">
+<h2><a class="toc-backref" href="#summary" role="doc-backlink">Source files</a><a class="headerlink" href="#source-files" title="Link to this heading"></a></h2>
+<section id="the-helper-tools-hpp-file">
+<h3><a class="toc-backref" href="#summary" role="doc-backlink">The <code class="docutils literal notranslate"><span class="pre">helper_tools.hpp</span></code> file</a><a class="headerlink" href="#the-helper-tools-hpp-file" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">helper_tools.hpp</span></code> file defines two functions that read trajectory files (<em>.apt</em> and <em>.csv</em>).</p>
+<p>This code includes the <code class="docutils literal notranslate"><span class="pre">csv2path</span></code> function and the <code class="docutils literal notranslate"><span class="pre">apt2path</span></code> function.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">csv2path</span></code></p>
+<blockquote>
+<div><p>This <code class="docutils literal notranslate"><span class="pre">csv2path</span></code> function reads data from a CSV file and converts it into a sequence of poses, which are positions and orientations in space. Let’s take a look at what this function does, part by part.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">std::vector&lt;geometry_msgs::msg::Pose&gt; csv2path(std::string path_filename, std::vector&lt;double&gt; shift, double scale)</span>
+</pre></div>
+</div>
+<p>This function takes as parameters the name of the CSV file to be read, an “offset vector” (optional) and a scale factor (optional). It returns a sequence of exposures.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">std::ifstream csvFile;</span>
+<span class="go">std::string line;</span>
+<span class="go">std::string delimiters = &quot;,&quot;;</span>
+<span class="go">std::vector&lt;std::string&gt; splitLine;</span>
+<span class="go">std::vector&lt;geometry_msgs::msg::Pose&gt; waypoints;</span>
+</pre></div>
+</div>
+<p>We declare an <code class="docutils literal notranslate"><span class="pre">ifstream</span></code> object to read the CSV file and a string to store each line of the CSV file read. Next, a string is created to specify the delimiter used in the CSV file, in this case a comma. Then a vector of strings is created to store the parts of each line separated by the previous delimiter. Finally, a vector of poses is declared to store the points extracted from the CSV file.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">if (shift.size() != 3) { ... }</span>
+</pre></div>
+</div>
+<p>With these lines, we verify that the “shift vector” is of size 3, necessary to perform the shift according to the 3 coordinates <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> and <code class="docutils literal notranslate"><span class="pre">z</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">if (csvFile) { ... }</span>
+</pre></div>
+</div>
+<p>We check that the CSV file has been opened successfully before starting to read its contents.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">while (std::getline(csvFile, line)) { ... }</span>
+</pre></div>
+</div>
+<p>Each line of the CSV file is scanned.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">boost::split(splitLine, line, boost::is_any_of(delimiters));</span>
+</pre></div>
+</div>
+<p>The Boost library’s split function is used to split the line into parts using the specified delimiter.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">waypoint.position.x = (std::stod(splitLine[0])) * scale + offsetX;</span>
+<span class="go">waypoint.position.y = (std::stod(splitLine[1])) * scale + offsetY;</span>
+<span class="go">waypoint.orientation.w = std::stod(splitLine[3]);</span>
+</pre></div>
+</div>
+<p>The first part of the line is converted into an x-coordinate of the pose, taking into account the specified offset and scale, as are y and z with the second and third parts of the line respectively.</p>
+<p>The components of the pose orientation are determined from the other parts of the line.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">if (waypoint != past_waypoint) {</span>
+<span class="go">    waypoints.push_back(waypoint);</span>
+<span class="go">    past_waypoint = waypoint;</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p>The current pose is compared with the preceding pose to avoid duplicates in the pose sequence. If it is different, it is added to the pose sequence.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">return waypoints;</span>
+</pre></div>
+</div>
+<p>We return the sequence of poses extracted from the CSV file.</p>
+<p>This function is therefore used to read poses from a CSV file and store them in a vector, thus defining a trajectory for the robot to follow.</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="the-robot-cartesian-ompl-cpp-file">
+<h3><a class="toc-backref" href="#summary" role="doc-backlink">The <code class="docutils literal notranslate"><span class="pre">robot_cartesian_ompl.cpp</span></code> file</a><a class="headerlink" href="#the-robot-cartesian-ompl-cpp-file" title="Link to this heading"></a></h3>
+<p>Put the link to the git hub line</p>
+<p>Le début du code inclut l’ensemble des bibliothèques et des fichiers d’en-tête nécessaires pour utiliser MoveIt, RViz et les fonctionnalités de ROS2.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">static const rclcpp::Logger LOGGER = rclcpp::get_logger(&quot;robot_cartesian_ompl&quot;);</span>
+</pre></div>
+</div>
+<p>Cette première ligne permet de définir LOGGER qui est un objet d’actualisation de ROS2 qui sert à imprimer des messages d’actualisation tout au long du programme. Puis on initialise ROS2 et on créé un noeud. Un exécuteur est demarré afin de traiter les événements ROS2 dans un thread séparé.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">namespace rvt = rviz_visual_tools;</span>
+<span class="go">rviz_visual_tools::RvizVisualTools rvisual_tools(&quot;world&quot;, &quot;path&quot;, move_group_node);</span>
+<span class="go">rvisual_tools.deleteAllMarkers();</span>
+</pre></div>
+</div>
+<p>Des outils visuels RViz sont créés pour afficher les éléments telles que les trajectoires, les repères associés, les objets dans l’environnement RViz.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">static const std::string PLANNING_GROUP = &quot;iiwa_arm&quot;;</span>
+<span class="go">moveit::planning_interface::MoveGroupInterface move_group(move_group_node, PLANNING_GROUP);</span>
+<span class="go">moveit::planning_interface::PlanningSceneInterface planning_scene_interface;</span>
+</pre></div>
+</div>
+<p>Le groupe de planification “iiwa_arm” est créé pour planifier les trajectoires du robot. Ce groupe de planification est défini par les articulations qu’on souhaite contrôler, ici le bras robot. La classe <code class="docutils literal notranslate"><span class="pre">MoveGroupInterface</span></code> fournit une interface pour intéragir avec le groupe de planification.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">const moveit::core::JointModelGroup * joint_model_group =</span>
+<span class="go">    move_group.getCurrentState()-&gt;getJointModelGroup(PLANNING_GROUP);</span>
+</pre></div>
+</div>
+<p>On récupère le modèle d’articulation pour le groupe de planification défini au dessus pour permettre de vérifier les limites des articulations et les propriétés nécessaires pour planifier les mouvements.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">std::string waypoint_file_path, waypoint_file_type;</span>
+<span class="go">std::vector&lt;double&gt; shift;</span>
+<span class="go">double scale;</span>
+<span class="go">std::vector&lt;geometry_msgs::msg::Pose&gt; waypoints;</span>
+<span class="go">move_group_node-&gt;get_parameter(&quot;waypoint_file_path&quot;, waypoint_file_path);</span>
+<span class="go">move_group_node-&gt;get_parameter(&quot;waypoint_file_type&quot;, waypoint_file_type);</span>
+<span class="go">move_group_node-&gt;get_parameter(&quot;shift&quot;, shift);</span>
+<span class="go">move_group_node-&gt;get_parameter(&quot;scale&quot;, scale);</span>
+<span class="go">RCLCPP_INFO(LOGGER, &quot;Loading waypoints from path: %s&quot;, waypoint_file_path.c_str());</span>
+<span class="go">if (waypoint_file_type == &quot;csv&quot;) {</span>
+<span class="go">    waypoints = csv2path(waypoint_file_path, shift, scale);</span>
+<span class="go">} else if (waypoint_file_type == &quot;apt&quot;) {</span>
+<span class="go">    waypoints = apt2path(waypoint_file_path, shift, scale);</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p>Cette partie du code permet de récupérer les paramètres de configuration du noeud ROS2 (chemin des fichiers de trajectoires, leur type, le vecteur de décalage et l’échelle à appliquer aux points). Puis en fonction du type spécifié, le code appelle une des deux fonctions vues précédement (csv2path ou apt2path) pour charger les points de la trajectoire.</p>
+<p>Ensuite, les outils visuels de RViz sont utilisés pour afficher les points de la atrajectoire et les repères en fonction de ce qui a été spécifié dans le fichier de configuration.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">moveit::planning_interface::MoveGroupInterface::Plan plan;</span>
+
+<span class="go">moveit_msgs::msg::RobotTrajectory plan_trajectory, exec_trajectory;</span>
+<span class="go">moveit_msgs::msg::RobotState robot_state;</span>
+<span class="go">const double jump_threshold = 0.0;</span>
+<span class="go">const double eef_step = 0.002;</span>
+<span class="go">move_group.setPoseReferenceFrame(move_group.getPlanningFrame());</span>
+<span class="go">RCLCPP_INFO(LOGGER, &quot;pose reference frame set to %s&quot;, move_group.getPoseReferenceFrame().c_str());</span>
+</pre></div>
+</div>
+<p>Ces lignes initialisent des variables pour stocker les trajectoires planifiées et exécutées, ainsi que des paramètres pour la planification de trajectoire.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">trajectory_processing::TimeOptimalTrajectoryGeneration traj_processor;</span>
+<span class="go">robot_trajectory::RobotTrajectory traj(move_group.getRobotModel(), PLANNING_GROUP);</span>
+<span class="go">robot_trajectory::RobotTrajectory traj_plan(move_group.getRobotModel(), PLANNING_GROUP);</span>
+</pre></div>
+</div>
+<p>La déclaration des objets pour traiter la trajectoire temporelle et pour stocker les trajectoires spécifiées se fait grâce à ces lignes. <code class="docutils literal notranslate"><span class="pre">traj_processor</span></code> sert à calculer les temps optimaux pour les points de la trajectoire, <code class="docutils literal notranslate"><span class="pre">traj</span></code> et <code class="docutils literal notranslate"><span class="pre">traj_plan</span></code> stockent les trajectoires planifiées.</p>
+<p>Après, une boucle <code class="docutils literal notranslate"><span class="pre">for</span></code> est créée afin de planifier une trajectoire cartésienne pour chaque point de la liste <code class="docutils literal notranslate"><span class="pre">waypoints</span></code>. En chaque point, la fonction <code class="docutils literal notranslate"><span class="pre">computeCartesianPath</span></code> est appelée pour calculer la trajectoire. La fraction de la trajectoire achevée est ensuite affichée, et la trajectoire est stockée dans l’objet <code class="docutils literal notranslate"><span class="pre">traj</span></code>, ainsi que l’état courant du robot.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">double velcocity_scaling, acceleration_scaling;</span>
+<span class="go">move_group_node-&gt;get_parameter(&quot;velcocity_scaling&quot;, velcocity_scaling);</span>
+<span class="go">move_group_node-&gt;get_parameter(&quot;acceleration_scaling&quot;, acceleration_scaling);</span>
+
+<span class="go">traj_processor.computeTimeStamps(traj, velcocity_scaling, acceleration_scaling);</span>
+</pre></div>
+</div>
+<p>Ces lignes récupèrent les paramètres d’échelle de la vitesse et de l’accélération à partir des paramètres définis dans le nœud ROS. Ensuite, la méthode <code class="docutils literal notranslate"><span class="pre">computeTimeStamps</span></code> de l’objet <code class="docutils literal notranslate"><span class="pre">traj_processor</span></code> est appelée pour calculer les temps optimaux pour chaque point de la trajectoire, en utilisant les paramètres d’échelle.</p>
+<p>La boucle <code class="docutils literal notranslate"><span class="pre">for</span></code> ajuste ensuite le temps de la trajectoire pour éviter les durées nulles entre les points puis la trajectoire est extraite sous la forme de message afin qu’elle soit exécutée par le robot. La ligne :</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">move_group</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">exec_trajectory</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>execute la trajectoire planifiée sur le robot.</p>
+</section>
+<section id="the-robot-cartesian-pilz-cpp-file">
+<h3><a class="toc-backref" href="#summary" role="doc-backlink">The <code class="docutils literal notranslate"><span class="pre">robot_cartesian_pilz.cpp</span></code> file</a><a class="headerlink" href="#the-robot-cartesian-pilz-cpp-file" title="Link to this heading"></a></h3>
+</section>
+<section id="the-robot-cartesian-hybrid-planning-cpp-file">
+<h3><a class="toc-backref" href="#summary" role="doc-backlink">The <code class="docutils literal notranslate"><span class="pre">robot_cartesian_hybrid_planning.cpp</span></code> file</a><a class="headerlink" href="#the-robot-cartesian-hybrid-planning-cpp-file" title="Link to this heading"></a></h3>
+</section>
+<section id="id1">
+<h3><a class="toc-backref" href="#summary" role="doc-backlink">The <code class="docutils literal notranslate"><span class="pre">robot_cartesian_ompl.cpp</span></code> file</a><a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ramsai_description.html" class="btn btn-neutral float-left" title="Package ramsai_description" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../documentation/documentation.html" class="btn btn-neutral float-right" title="Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, ICUBE Laboratory, University of Strasbourg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presentation &mdash; RAMSAI 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=eafc0fe6" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            RAMSAI
+              <img src="../_static/logo-icube.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">Project introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Packages description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../packages_description/ramsai_bringup.html">Package ramsai_bringup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages_description/ramsai_description.html">Package ramsai_description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages_description/ramsai_planning.html">Package ramsai_planning</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation/documentation.html">Documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="start.html">Start robot configuration, path planning and execution</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../userguide/blabla.html">Test nouvelle partielle</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Aides RST</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../aides_rst/essai_1.html">Les bases de rst</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RAMSAI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Presentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/quickstart/presentation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="presentation">
+<h1>Presentation<a class="headerlink" href="#presentation" title="Link to this heading"></a></h1>
+<section id="global-presentation">
+<h2>Global presentation<a class="headerlink" href="#global-presentation" title="Link to this heading"></a></h2>
+<p>Le répertoire RAMSAI contient 3 packages : <code class="code docutils literal notranslate"><span class="pre">ramsai_description</span></code>, <code class="code docutils literal notranslate"><span class="pre">ramsai_bringup</span></code> et <code class="code docutils literal notranslate"><span class="pre">ramsai_planning</span></code>.:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">RAMSAI</span><span class="o">/</span>
+<span class="w">    </span><span class="n">ramsai_bringup</span><span class="o">/</span>
+<span class="w">    </span><span class="n">ramsai_description</span><span class="o">/</span>
+<span class="w">    </span><span class="n">ramsai_planning</span><span class="o">/</span>
+</pre></div>
+</div>
+</section>
+<section id="packages-presentation">
+<h2>Packages presentation<a class="headerlink" href="#packages-presentation" title="Link to this heading"></a></h2>
+<p>gdfjgbhg</p>
+<section id="package-ramsai-description">
+<h3>Package <code class="code docutils literal notranslate"><span class="pre">ramsai_description</span></code><a class="headerlink" href="#package-ramsai-description" title="Link to this heading"></a></h3>
+<p>Ce package regroupe tout les fichiers de configuration propres au robot (URDF and SRDF files) nécessaire à sa représentation 3D sous moveit et à la gestion des colisions.
+Dans le sous-dossier meshes on retrouver tous les fichiers STL des objets fixes au robot.</p>
+<p>La structure du package est comme suit</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ramsai_description</span><span class="o">/</span>
+<span class="w">    </span><span class="n">config</span><span class="o">/</span>
+<span class="w">        </span><span class="n">initial_positions</span><span class="p">.</span><span class="n">yaml</span>
+<span class="w">        </span><span class="n">ramsai</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">xacro</span>
+<span class="w">    </span><span class="n">meshes</span><span class="o">/</span>
+<span class="w">        </span><span class="n">flex_fellow_h_800</span><span class="o">/</span>
+<span class="w">            </span><span class="p">...</span>
+<span class="w">        </span><span class="n">viscotec</span><span class="o">/</span>
+<span class="w">            </span><span class="p">...</span>
+<span class="w">    </span><span class="n">urdf</span><span class="o">/</span>
+<span class="w">        </span><span class="n">iiwa14</span><span class="p">.</span><span class="n">urdf</span><span class="p">.</span><span class="n">xacro</span>
+<span class="w">    </span><span class="n">srdf</span><span class="o">/</span>
+<span class="w">    </span><span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span>
+<span class="w">    </span><span class="n">package</span><span class="p">.</span><span class="n">xml</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="package-ramsai-bringup">
+<h3>Package <code class="code docutils literal notranslate"><span class="pre">ramsai_bringup</span></code><a class="headerlink" href="#package-ramsai-bringup" title="Link to this heading"></a></h3>
+<p><code class="code docutils literal notranslate"><span class="pre">ramsai_bringup</span></code> est le package de lancement de la configuration du robot. Il contient deux fichiers launch : <code class="code docutils literal notranslate"><span class="pre">*ramsai.launch.py*</span></code> et <code class="code docutils literal notranslate"><span class="pre">*ramsai_planning.launch.py*</span></code>.</p>
+<p>La structure du package est comme suit:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ramsai_bringup</span><span class="o">/</span>
+<span class="w">    </span><span class="n">launch</span><span class="o">/</span>
+<span class="w">        </span><span class="n">ramsai_planning</span><span class="p">.</span><span class="n">launch</span><span class="p">.</span><span class="n">py</span>
+<span class="w">        </span><span class="n">ramsai</span><span class="p">.</span><span class="n">launch</span><span class="p">.</span><span class="n">py</span>
+<span class="w">    </span><span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span>
+<span class="w">    </span><span class="n">package</span><span class="p">.</span><span class="n">xml</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="package-ramsai-planning">
+<h3>Package <code class="code docutils literal notranslate"><span class="pre">ramsai_planning</span></code><a class="headerlink" href="#package-ramsai-planning" title="Link to this heading"></a></h3>
+<p><code class="code docutils literal notranslate"><span class="pre">ramsai_planning</span></code> est le package de lancement d’une trajectoire donnée.</p>
+<p>La structure est comme suit</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ramsai_planning</span><span class="o">/</span>
+<span class="w">    </span><span class="n">config</span><span class="o">/</span>
+<span class="w">        </span><span class="n">example_apt</span>
+<span class="w">            </span><span class="p">...</span>
+<span class="w">        </span><span class="n">robot_cartesian_config</span><span class="p">.</span><span class="n">yaml</span>
+<span class="w">    </span><span class="n">launch</span><span class="o">/</span>
+<span class="w">        </span><span class="n">robot_cartesian_ompl</span><span class="p">.</span><span class="n">launch</span><span class="p">.</span><span class="n">py</span>
+<span class="w">        </span><span class="n">robot_cartesian_pilz</span><span class="p">.</span><span class="n">launch</span><span class="p">.</span><span class="n">py</span>
+<span class="w">    </span><span class="n">src</span><span class="o">/</span>
+<span class="w">        </span><span class="n">helper_tools</span><span class="p">.</span><span class="n">hpp</span>
+<span class="w">        </span><span class="n">robot_cartesian_ompl</span><span class="p">.</span><span class="n">cpp</span>
+<span class="w">        </span><span class="n">robot_cartesian_pilz</span><span class="p">.</span><span class="n">cpp</span>
+<span class="w">    </span><span class="n">CMakeLists</span><span class="p">.</span><span class="n">txt</span>
+<span class="w">    </span><span class="n">package</span><span class="p">.</span><span class="n">xml</span>
+</pre></div>
+</div>
+<p>Le dossier <code class="code docutils literal notranslate"><span class="pre">example_apt</span></code> regroupe l’ensemble des codes de trajectoire. Les codes de trajectoires sont des code <em>.apt</em> ou <em>.csv</em></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, ICUBE Laboratory, University of Strasbourg.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
