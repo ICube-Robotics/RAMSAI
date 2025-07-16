@@ -22,7 +22,8 @@ rpdo:  # RxPDO
       - {index: 0x0000, sub_index: 0x00, type: bit8} # Gap
   - index: 0x1604
     channels:
-      - {index: 0x7010, sub_index: 0x21, type: int16, command_interface: velocity} # Velocity
+      - {index: 0x7010, sub_index: 0x21, type: int16, command_interface: velocity, factor: 16.3835} # Velocity in steps/s with the factor=32767 /2000fullsteps
+      #Be careful, the velocity range is fixed by default at 2000 fullstep/s, if the velocity range changes, it is necessary to change the factor (/2)
 tpdo:  # TxPDO
   - index: 0x1a03
     channels:
