@@ -28,6 +28,9 @@ Github repository for the ANR RAMSAI project.
     git clone https://github.com/ICube-Robotics/RAMSAI.git
     ```
 
+> [!NOTE]  
+> Checkout to specific application (i.e., branch) if needed...
+
 4. Pull relevant packages, install dependencies:
     ```shell
     cd RAMSAI
