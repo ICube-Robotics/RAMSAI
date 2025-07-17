@@ -3,14 +3,21 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-#
 #     http://www.apache.org/licenses/LICENSE-2.0
-#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+# Lancement complet du système robotique
+# - Robot + contrôleurs
+# - MoveIt2
+# - RViz 
+# - Simulation Gazebo (si activée)
+# - Contrôleur GPIO
+# - Support FRI pour Sunrise IP/property
+# Ce launch peut être utilisé pour l'intégration complète
 
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription, DeclareLaunchArgument, RegisterEventHandler
@@ -104,7 +111,7 @@ def generate_launch_description():
         )
     )
 
-    # Initialize Arguments
+    # Initialize Arguments Configuration via LaunchConfiguration
     use_sim = LaunchConfiguration('use_sim')
     use_fake_hardware = LaunchConfiguration('use_fake_hardware')
     use_planning = LaunchConfiguration('use_planning')
@@ -116,7 +123,7 @@ def generate_launch_description():
     command_interface = LaunchConfiguration('command_interface')
     base_frame_file = LaunchConfiguration('base_frame_file')
 
-    # Get URDF via xacro
+    # Get robot URDF description via xacro
     robot_description_content = Command(
         [
             PathJoinSubstitution([FindExecutable(name='xacro')]),
@@ -149,10 +156,35 @@ def generate_launch_description():
             base_frame_file,
         ]
     )
-
     robot_description = {'robot_description': robot_description_content}
 
-    # Running with Moveit2 planning
+    # Fichier de config des controllers  
+    robot_controllers = PathJoinSubstitution(
+        [
+            FindPackageShare('ramsai_description'),
+            'config',
+            'ramsai_controllers.yaml',
+        ]
+    )
+
+    #  Lancement du noeud ROS2 control
+    control_node = Node(
+        package='controller_manager',
+        executable='ros2_control_node',
+        parameters=[robot_description, robot_controllers],
+        output='both',
+        condition=UnlessCondition(use_sim),
+    )
+
+    # Publisher d'état du robot
+    robot_state_pub_node = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        output='both',
+        parameters=[robot_description],
+    )
+
+    # Running with Moveit2 planning (Pilz + OMPL)
     iiwa_planning_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             FindPackageShare('ramsai_bringup'),
@@ -166,30 +198,10 @@ def generate_launch_description():
         }.items(),
         condition=IfCondition(use_planning),
     )
-
-    robot_controllers = PathJoinSubstitution(
-        [
-            FindPackageShare('ramsai_description'),
-            'config',
-            'ramsai_controllers.yaml',
-        ]
-    )
+    
+    #  RViz
     rviz_config_file = PathJoinSubstitution(
         [FindPackageShare('iiwa_description'), 'rviz', 'iiwa.rviz']
-    )
-
-    control_node = Node(
-        package='controller_manager',
-        executable='ros2_control_node',
-        parameters=[robot_description, robot_controllers],
-        output='both',
-        condition=UnlessCondition(use_sim),
-    )
-    robot_state_pub_node = Node(
-        package='robot_state_publisher',
-        executable='robot_state_publisher',
-        output='both',
-        parameters=[robot_description],
     )
     rviz_node = Node(
         package='rviz2',
@@ -202,11 +214,12 @@ def generate_launch_description():
         ],
         condition=UnlessCondition(use_planning),
     )
+
+    #  Simulation Gazebo (si activée)
     iiwa_simulation_world = PathJoinSubstitution(
         [FindPackageShare('iiwa_description'),
             'gazebo/worlds', 'empty.world']
     )
-
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             [PathJoinSubstitution(
@@ -226,13 +239,13 @@ def generate_launch_description():
         condition=IfCondition(use_sim),
     )
 
+    # Spawner pour tous les contrôleurs
     joint_state_broadcaster_spawner = Node(
         package='controller_manager',
         executable='spawner',
         arguments=['joint_state_broadcaster', '--controller-manager',
                    ['controller_manager']],
     )
-
     external_torque_broadcaster_spawner = Node(
         package='controller_manager',
         executable='spawner',
@@ -240,20 +253,19 @@ def generate_launch_description():
                    ['controller_manager']],
         condition=UnlessCondition(use_sim),
     )
-
     gpio_command_controller = Node(
         package='controller_manager',
         executable='spawner',
         arguments=['gpio_command_controller', '--controller-manager',
                    ['controller_manager']],
     )
-
     robot_controller_spawner = Node(
         package='controller_manager',
         executable='spawner',
         arguments=[robot_controller, '--controller-manager', ['controller_manager']],
     )
 
+    # Ordonnancement des lancements (séquences)
     # Delay `joint_state_broadcaster` after spawn_entity
     delay_joint_state_broadcaster_spawner_after_spawn_entity = RegisterEventHandler(
         event_handler=OnProcessExit(
@@ -262,7 +274,6 @@ def generate_launch_description():
         ),
         condition=IfCondition(use_sim),
     )
-
     # Delay `joint_state_broadcaster` after control_node
     delay_joint_state_broadcaster_spawner_after_control_node = RegisterEventHandler(
         event_handler=OnProcessStart(
@@ -271,7 +282,6 @@ def generate_launch_description():
         ),
         condition=UnlessCondition(use_sim),
     )
-
     # Delay rviz start after `joint_state_broadcaster`
     delay_rviz_after_joint_state_broadcaster_spawner = RegisterEventHandler(
         event_handler=OnProcessExit(
@@ -280,7 +290,6 @@ def generate_launch_description():
         ),
         condition=IfCondition(start_rviz),
     )
-
     # Delay start of robot_controller after `joint_state_broadcaster`
     delay_robot_controller_spawner_after_joint_state_broadcaster_spawner = RegisterEventHandler(
         event_handler=OnProcessExit(
@@ -289,6 +298,7 @@ def generate_launch_description():
         )
     )
 
+    # Liste finale des nodes à lancer
     nodes = [
         gazebo,
         control_node,

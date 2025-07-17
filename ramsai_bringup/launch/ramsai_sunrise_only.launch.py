@@ -11,6 +11,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+# Lancement pour communication avec SunRise via UDP pour l'extrusion (publication automatique sur le gpio_command_controller/commands)
+# - ros2_control_node avec gpio
+# - viscotec_node : observe les vitesses de rotation vm [step/s] envoyées par SunRise et les publie sur le topic gpio...
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.substitutions import Command, PathJoinSubstitution, FindExecutable
