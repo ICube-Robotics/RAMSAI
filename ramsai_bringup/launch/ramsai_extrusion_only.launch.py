@@ -21,6 +21,7 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.substitutions import Command, PathJoinSubstitution, FindExecutable
 from launch_ros.substitutions import FindPackageShare
+from launch.actions import LogInfo
 
 def generate_launch_description():
      # Description du robot (nécessaire à ros2_control)
@@ -76,8 +77,16 @@ def generate_launch_description():
          arguments=['gpio_command_controller', '--controller-manager',
 '/controller_manager'],
      )
+     
+     log_message = LogInfo(msg=(
+        "[MODE EXTRUSION UNIQUEMENT]"
+        "Merci d'ouvrir un autre terminal pour publier sur le topic "
+        " `gpio_command_controller/commands` avec les vitesses de rotation  "
+        " de la viscotec souhaitée (en step/s)"
+     ))
 
      return LaunchDescription([
+         log_message,
          control_node,
          joint_state_broadcaster_spawner,
          gpio_command_controller_spawner
