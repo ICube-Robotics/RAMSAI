@@ -8,3 +8,4 @@ RAMSAI
   :glob:
 
   quickstart/start
+  projet/fiche_identite
