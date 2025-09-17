@@ -71,7 +71,9 @@ class GcodeMonitorNode(Node):
     def __init__(self):
         """Gcodemonitornode class constructor."""
         super().__init__('printer_gcode_monitor')
-        self.serialPort = openSerialPort('/dev/ttyACM0', 250000)
+        self.get_logger().info("Connecting to device")
+        self.serialPort = openSerialPort("/dev/ttyACM0", 250000)
+        self.get_logger().info("device connected")
         self.serialPort.write(b"\n\n")
         time.sleep(2)
         self.gcodeService = self.create_service(GcodeCommand, 'send_gcode', self.execute_gcode_sending)
