@@ -20,6 +20,7 @@ find_package(sensor_msgs REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/GocatorPTCloud.srv"
+  "srv/PTCloudTreat.srv"
   DEPENDENCIES builtin_interfaces std_msgs sensor_msgs
 )
 

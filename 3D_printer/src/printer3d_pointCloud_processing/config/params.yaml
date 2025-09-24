@@ -1,4 +1,0 @@
-printer3d_pointCloud_processing:
-  ros__parameters:
-    test: "/home/gulltor/Documents/history/test_printing_history"
-    gcode_file_dir: "/home/gulltor/Documents/gcodes/piece_test_base.gcode"

@@ -17,16 +17,17 @@ import rclpy
 from rclpy.node import Node
 from printer3d_msgs.srv import GcodeCommand
 import numpy as np
-import pyvista as pv
+# import pyvista as pv
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import random
 import pyransac3d as pyrsc
 from math import sqrt
+from printer3d_gocator_msgs.srv import PTCloudTreat
+from constants import *
 
 """ parametres du noeuds ROS, à mettre dans un fichier de config a la fin"""
 basic_limit_for_reflexions = 12
-
 
 coords = []
 
@@ -50,6 +51,34 @@ class PointCloudProcessingNode(Node):
         self.x2 = 100000
         self.y1 = -100000
         self.y2 = 100000
+        self.pointCloudManipService = self.create_service(PTCloudTreat, 'manip_PTCloud', self.manip_point_cloud)
+
+    def manip_point_cloud(self, request, response):
+
+        order = request.order
+        filename = request.filenamePointCloud
+
+        try:
+            point_Cloud = self.load_scan(filename)
+        except:
+            self.get_logger.info("non existing point cloud : "+filename)
+            exit()
+
+        if order == ORDRE_INITIALISATION:
+
+            reference_layer_filtered = self.remove_non_used_plate_points(point_Cloud)
+            self.transformation_creation(reference_layer_filtered)
+
+        elif order == ORDRE_CALC_M_S:
+
+            filtered_scan = self.remove_non_used_plate_points(point_Cloud)
+            transformed_filtered_scan = self.tranform_point_cloud(filtered_scan)
+
+        else:
+            self.get_logger.info("non existing order number : "+filename)
+            exit()
+
+        return 0
 
     def load_scan(self,fileName):
         data = np.squeeze(np.load(fileName))
@@ -306,8 +335,10 @@ class PointCloudProcessingNode(Node):
 if __name__ == '__main__':
     rclpy.init()
     point_cloud_processing_node = PointCloudProcessingNode()
-    reference_layer = point_cloud_processing_node.load_scan("/home/gulltor/Ramsai_Robotics/history/impression_base_avec_retraction_20_pourcents/scan/layer_scan_0.npy")
-    layer_3 = point_cloud_processing_node.load_scan("/home/gulltor/Ramsai_Robotics/history/impression_base_avec_retraction_20_pourcents/scan/layer_scan_3.npy")
+
+    base_filename = "/home/gulltor/Documents/history/impression_base_avec_retraction/scan"
+    reference_layer = point_cloud_processing_node.load_scan(base_filename+"/layer_scan_0.npy")
+    layer_3 = point_cloud_processing_node.load_scan(base_filename+"/layer_scan_3.npy")
     layer_3 = point_cloud_processing_node.remove_value_above(layer_3, -70)
 
     #point_cloud_processing_node.ask_for_plate_limits(layer_3)
@@ -334,7 +365,7 @@ if __name__ == '__main__':
     Sj = [None]*122
 
     for i in range(0,122):
-        point_cloud_list[i] = point_cloud_processing_node.load_scan('/home/gulltor/Ramsai_Robotics/history/impression_base_avec_retraction_20_pourcents/scan/layer_scan_'+str(i)+'.npy')
+        point_cloud_list[i] = point_cloud_processing_node.load_scan(base_filename+'/layer_scan_'+str(i)+'.npy')
         point_cloud_list[i] = point_cloud_processing_node.remove_non_used_plate_points(point_cloud_list[i])
         point_cloud_list[i] = point_cloud_processing_node.select_points_of_layer(point_cloud_list[i], [xg-7, xg+7], [yg-7, yg+7])
         Mj[i] = point_cloud_processing_node.get_Mj(point_cloud_list[i], i, 0.41)
