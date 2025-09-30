@@ -25,6 +25,7 @@ import pyransac3d as pyrsc
 from math import sqrt
 from printer3d_gocator_msgs.srv import PTCloudTreat
 from constants import *
+from mask_creation_utility import *
 
 """ parametres du noeuds ROS, à mettre dans un fichier de config a la fin"""
 basic_limit_for_reflexions = 12
