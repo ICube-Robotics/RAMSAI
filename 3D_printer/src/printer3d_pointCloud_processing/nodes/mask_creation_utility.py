@@ -75,21 +75,37 @@ class StlRepresentation():
         intersections_y = [intersections[i][1] for i in range(0, len(intersections))]
         
         contours = {}
-        
-        contours[1] = [triangle_intersions[0]]
+        index = 1
+        contours[index] = [triangle_intersions[0]]
         (neighbor, neighbor_indices) = find_neighbor(triangle_intersions[0], triangle_intersions, 0.001)
+        
         for i in range(0,len(neighbor)):
-            contours[1].append(neighbor[i])
+            contours[index].append(neighbor[i])
+            
+        treated_indices = [0]
         test = False
+        index = 1
+        
         while test == False:
+            
             indices_to_be_tested = neighbor_indices.copy()
             neighbor_indices = [None]*len(indices_to_be_tested)
             neighbor = [None]*len(indices_to_be_tested)
+            
             for i in range(0,len(indices_to_be_tested)):
-                (neighbor[i], neighbor_indices[i]) = find_neighbor(triangle_intersions[0], triangle_intersions, 0.001)
-        
-        
-        
+                if indices_to_be_tested[i] not in treated_indices:
+                    (neighbor[i], neighbor_indices[i]) = find_neighbor(triangle_intersions[indices_to_be_tested[i]], triangle_intersions, 0.001)
+                
+                treated_indices.append(indices_to_be_tested[i])
+                new_indices = []
+                for k in range(0,len(neighbor[i])):
+                    if neighbor[i] != [None]:
+                        contours[index].append(neighbor[i][k])
+                        new_indices.append(neighbor_indices[i][k])
+                
+            indices_to_be_tested = new_indices.copy()
+                
+            
         
         plt.figure(figsize=(16, 12))
         plt.plot(intersections_x,intersections_y,'r*')
